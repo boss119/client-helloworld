@@ -1,6 +1,5 @@
 const supertest = require("supertest");
 const expect = require('chai').expect;
-const should = require('should');
 
 // This agent refers to PORT where program is running.
 
@@ -19,7 +18,6 @@ describe("SAMPLE unit test",function(){
     })
     .expect(200)
     .end(function(err,res){
-      // expect(res.status).to.equal(200);
       console.log(res.body);
       expect(res.body.total).to.equal(10);
       done();
@@ -35,7 +33,6 @@ describe("SAMPLE unit test",function(){
     })
     .expect(200)
     .end(function(err,res){
-      // expect(res.status).to.equal(200);
       console.log(res.body);
       expect(res.body.total).to.equal(0);
       done();
@@ -51,7 +48,6 @@ describe("SAMPLE unit test",function(){
     })
     .expect(200)
     .end(function(err,res){
-      // expect(res.status).to.equal(200);
       console.log(res.body);
       expect(res.body.total).to.equal(0);
       done();
@@ -67,7 +63,6 @@ describe("SAMPLE unit test",function(){
     })
     .expect(200)
     .end(function(err,res){
-      // expect(res.status).to.equal(200);
       console.log(res.body);
       expect(res.body.total).to.equal(0);
       done();
@@ -83,7 +78,6 @@ describe("SAMPLE unit test",function(){
     })
     .expect(200)
     .end(function(err,res){
-      // expect(res.status).to.equal(200);
       console.log(res.body);
       expect(res.body.total).to.equal(10);
       done();
@@ -99,7 +93,6 @@ describe("SAMPLE unit test",function(){
     })
     .expect(200)
     .end(function(err,res){
-      // expect(res.status).to.equal(200);
       console.log(res.body);
       expect(res.body.total).to.equal(5);
       done();
@@ -115,7 +108,6 @@ describe("SAMPLE unit test",function(){
     })
     .expect(200)
     .end(function(err,res){
-      // expect(res.status).to.equal(200);
       console.log(res.body);
       expect(res.body.total).to.equal(0);
       done();
