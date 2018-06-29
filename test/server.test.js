@@ -4,7 +4,7 @@ const should = require('should');
 
 // This agent refers to PORT where program is running.
 
-const server = supertest.agent("http://localhost:7777");
+const server = supertest.agent("https://whispering-castle-34361.herokuapp.com/");
 
 // UNIT test begin
 
@@ -13,13 +13,10 @@ describe("SAMPLE unit test",function(){
     //calling ADD api
     server
     .get('/add')
-    .type('form')
-    .send({
+    .query({
       'a': 5,
       'b': 5
     })
-    .set('Accept', 'application/json')
-    .expect("Content-type",/json/)
     .expect(200)
     .end(function(err,res){
       // expect(res.status).to.equal(200);
@@ -32,13 +29,10 @@ describe("SAMPLE unit test",function(){
     //calling ADD api
     server
     .get('/add')
-    .type('form')
-    .send({
+    .query({
       'a': -5,
       'b': 5
     })
-    .set('Accept', 'application/json')
-    .expect("Content-type",/json/)
     .expect(200)
     .end(function(err,res){
       // expect(res.status).to.equal(200);
@@ -51,13 +45,10 @@ describe("SAMPLE unit test",function(){
     //calling ADD api
     server
     .get('/add')
-    .type('form')
-    .send({
+    .query({
       'a': 5,
       'b': -5
     })
-    .set('Accept', 'application/json')
-    .expect("Content-type",/json/)
     .expect(200)
     .end(function(err,res){
       // expect(res.status).to.equal(200);
@@ -70,13 +61,10 @@ describe("SAMPLE unit test",function(){
     //calling ADD api
     server
     .get('/add')
-    .type('form')
-    .send({
+    .query({
       'a': 0,
       'b': 0
     })
-    .set('Accept', 'application/json')
-    .expect("Content-type",/json/)
     .expect(200)
     .end(function(err,res){
       // expect(res.status).to.equal(200);
@@ -89,13 +77,10 @@ describe("SAMPLE unit test",function(){
     //calling ADD api
     server
     .get('/add')
-    .type('form')
-    .send({
+    .query({
       'a': '5',
       'b': '5'
     })
-    .set('Accept', 'application/json')
-    .expect("Content-type",/json/)
     .expect(200)
     .end(function(err,res){
       // expect(res.status).to.equal(200);
@@ -108,13 +93,10 @@ describe("SAMPLE unit test",function(){
     //calling ADD api
     server
     .get('/add')
-    .type('form')
-    .send({
+    .query({
       'a': '5',
       'b': 'a'
     })
-    .set('Accept', 'application/json')
-    .expect("Content-type",/json/)
     .expect(200)
     .end(function(err,res){
       // expect(res.status).to.equal(200);
@@ -127,13 +109,10 @@ describe("SAMPLE unit test",function(){
     //calling ADD api
     server
     .get('/add')
-    .type('form')
-    .send({
+    .query({
       'a': 'a',
       'b': 'b'
     })
-    .set('Accept', 'application/json')
-    .expect("Content-type",/json/)
     .expect(200)
     .end(function(err,res){
       // expect(res.status).to.equal(200);
