@@ -4,7 +4,7 @@ const should = require('should');
 
 // This agent refers to PORT where program is running.
 
-const server = supertest.agent("https://whispering-castle-34361.herokuapp.com/");
+const server = supertest.agent("https://whispering-castle-34361.herokuapp.com");
 
 // UNIT test begin
 
