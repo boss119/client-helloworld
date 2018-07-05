@@ -1,116 +1,323 @@
-const supertest = require("supertest");
-const expect = require('chai').expect;
+const supertest = require('supertest');
+const app = require('../routes/index');
 
-// This agent refers to PORT where program is running.
+const server = supertest(app);
 
-const server = supertest.agent("https://whispering-castle-34361.herokuapp.com");
+describe('Sample Integration tests', () => {
+  it('should return total = 10 when a = 5 add b = 5', (done) => {
+    // calling ADD api
+    server
+      .get('/add')
+      .query({
+        a: 5,
+        b: 5,
+      })
+      .expect((res) => {
+        console.log(res.body);
+      })
+      .expect('Content-Type', /json/)
+      .expect(200, {
+        a: 5,
+        b: 5,
+        total: 10,
+      }, done);
+  });
 
-// UNIT test begin
+  it('should return total = 0 when a = 5 add b = -5', (done) => {
+    // calling ADD api
+    server
+      .get('/add')
+      .query({
+        a: 5,
+        b: -5,
+      })
+      .expect((res) => {
+        console.log(res.body);
+      })
+      .expect('Content-Type', /json/)
+      .expect(200, {
+        a: 5,
+        b: -5,
+        total: 0,
+      }, done);
+  });
 
-describe("SAMPLE unit test",function(){
-  it("when a=5 and b=5, equal 10",function(done){
-    //calling ADD api
+  it('should return total = 0 when a = 0 add b = 0', (done) => {
+    // calling ADD api
     server
-    .get('/add')
-    .query({
-      'a': 5,
-      'b': 5
-    })
-    .expect(200)
-    .end(function(err,res){
-      console.log(res.body);
-      expect(res.body.total).to.equal(10);
-      done();
-    });
+      .get('/add')
+      .query({
+        a: 0,
+        b: 0,
+      })
+      .expect((res) => {
+        console.log(res.body);
+      })
+      .expect('Content-Type', /json/)
+      .expect(200, {
+        a: 0,
+        b: 0,
+        total: 0,
+      }, done);
   });
-  it("when a = -5, b = 5, equal 0",function(done){
-    //calling ADD api
+
+  it('should return http code 400 when a = "5" add b = "a"', (done) => {
+    // calling ADD api
     server
-    .get('/add')
-    .query({
-      'a': -5,
-      'b': 5
-    })
-    .expect(200)
-    .end(function(err,res){
-      console.log(res.body);
-      expect(res.body.total).to.equal(0);
-      done();
-    });
+      .get('/add')
+      .query({
+        a: '5',
+        b: 'a',
+      })
+      .expect((res) => {
+        console.log(res.body);
+      })
+      .expect('Content-type', /json/)
+      .expect(400, {
+        message: 'Incorrect input a or b value.',
+      }, done);
   });
-  it("when a = 5, b = -5, equal 0",function(done){
-    //calling ADD api
+
+  it('should return http code 400 when a = "a" add b = "b"', (done) => {
+    // calling ADD api
     server
-    .get('/add')
-    .query({
-      'a': 5,
-      'b': -5
-    })
-    .expect(200)
-    .end(function(err,res){
-      console.log(res.body);
-      expect(res.body.total).to.equal(0);
-      done();
-    });
+      .get('/add')
+      .query({
+        a: 'a',
+        b: 'b',
+      })
+      .expect((res) => {
+        console.log(res.body);
+      })
+      .expect('Content-type', /json/)
+      .expect(400, {
+        message: 'Incorrect input a or b value.',
+      }, done);
   });
-  it("when a = 0, b = 0, equal 0",function(done){
-    //calling ADD api
+
+  it('should return http code 400 when a = "5" add b = null', (done) => {
+    // calling ADD api
     server
-    .get('/add')
-    .query({
-      'a': 0,
-      'b': 0
-    })
-    .expect(200)
-    .end(function(err,res){
-      console.log(res.body);
-      expect(res.body.total).to.equal(0);
-      done();
-    });
+      .get('/add')
+      .query({
+        a: '5',
+      })
+      .expect((res) => {
+        console.log(res.body);
+      })
+      .expect('Content-type', /json/)
+      .expect(400, {
+        message: 'Input a or b not found value.',
+      }, done);
   });
-  it("when a = '5', b = '5', equal 10",function(done){
-    //calling ADD api
+
+  it('should return http code 400 when a = null add b = "5"', (done) => {
+    // calling ADD api
     server
-    .get('/add')
-    .query({
-      'a': '5',
-      'b': '5'
-    })
-    .expect(200)
-    .end(function(err,res){
-      console.log(res.body);
-      expect(res.body.total).to.equal(10);
-      done();
-    });
+      .get('/add')
+      .query({
+        b: '5',
+      })
+      .expect((res) => {
+        console.log(res.body);
+      })
+      .expect('Content-type', /json/)
+      .expect(400, {
+        message: 'Input a or b not found value.',
+      }, done);
   });
-  it("when a = '5', b = 'a', equal 5",function(done){
-    //calling ADD api
+
+  it('should return total = 0 when a = 5 minus b = 5', (done) => {
+    // calling ADD api
     server
-    .get('/add')
-    .query({
-      'a': '5',
-      'b': 'a'
-    })
-    .expect(200)
-    .end(function(err,res){
-      console.log(res.body);
-      expect(res.body.total).to.equal(5);
-      done();
-    });
+      .get('/minus')
+      .query({
+        a: 5,
+        b: 5,
+      })
+      .expect((res) => {
+        console.log(res.body);
+      })
+      .expect('Content-Type', /json/)
+      .expect(200, {
+        a: 5,
+        b: 5,
+        total: 0,
+      }, done);
   });
-  it("when a = 'a', b = 'b, equal 0",function(done){
-    //calling ADD api
+
+  it('should return http code 400 when a = 5 minus b = "a"', (done) => {
+    // calling ADD api
     server
-    .get('/add')
-    .query({
-      'a': 'a',
-      'b': 'b'
-    })
-    .expect(200)
-    .end(function(err,res){
-      console.log(res.body);
-      expect(res.body.total).to.equal(0);
-      done();
-    });
+      .get('/minus')
+      .query({
+        a: 5,
+        b: 'a',
+      })
+      .expect((res) => {
+        console.log(res.body);
+      })
+      .expect('Content-Type', /json/)
+      .expect(400, {
+        message: 'Incorrect input a or b value.',
+      }, done);
+  });
+
+  it('should return http code 400 when a = 5 minus b = null', (done) => {
+    // calling ADD api
+    server
+      .get('/minus')
+      .query({
+        a: 5,
+      })
+      .expect((res) => {
+        console.log(res.body);
+      })
+      .expect('Content-Type', /json/)
+      .expect(400, {
+        message: 'Input a or b not found value.',
+      }, done);
+  });
+
+  it('should return total = 25 when a = 5 multiple b = 5', (done) => {
+    // calling ADD api
+    server
+      .get('/multiple')
+      .query({
+        a: 5,
+        b: 5,
+      })
+      .expect((res) => {
+        console.log(res.body);
+      })
+      .expect('Content-Type', /json/)
+      .expect(200, {
+        a: 5,
+        b: 5,
+        total: 25,
+      }, done);
+  });
+
+  it('should return total = 0 when a = 5 multiple b = 0', (done) => {
+    // calling ADD api
+    server
+      .get('/multiple')
+      .query({
+        a: 5,
+        b: 0,
+      })
+      .expect((res) => {
+        console.log(res.body);
+      })
+      .expect('Content-Type', /json/)
+      .expect(200, {
+        a: 5,
+        b: 0,
+        total: 0,
+      }, done);
+  });
+
+  it('should return http code 400 when a = 5 multiple b = "g"', (done) => {
+    // calling ADD api
+    server
+      .get('/multiple')
+      .query({
+        a: 5,
+        b: 'g',
+      })
+      .expect((res) => {
+        console.log(res.body);
+      })
+      .expect('Content-type', /json/)
+      .expect(400, {
+        message: 'Incorrect input a or b value.',
+      }, done);
+  });
+
+  it('should return http code 400 when a = 5 multiple b = null', (done) => {
+    // calling ADD api
+    server
+      .get('/multiple')
+      .query({
+        a: 5,
+      })
+      .expect((res) => {
+        console.log(res.body);
+      })
+      .expect('Content-type', /json/)
+      .expect(400, {
+        message: 'Input a or b not found value.',
+      }, done);
+  });
+
+  it('should return total = 1 when a = 5 devide b = 5', (done) => {
+    // calling ADD api
+    server
+      .get('/devide')
+      .query({
+        a: 5,
+        b: 5,
+      })
+      .expect((res) => {
+        console.log(res.body);
+      })
+      .expect('Content-Type', /json/)
+      .expect(200, {
+        a: 5,
+        b: 5,
+        total: 1,
+      }, done);
+  });
+
+  it('should return total = 0.5 when a = 4 devide b = 8', (done) => {
+    // calling ADD api
+    server
+      .get('/devide')
+      .query({
+        a: 4,
+        b: 8,
+      })
+      .expect((res) => {
+        console.log(res.body);
+      })
+      .expect('Content-Type', /json/)
+      .expect(200, {
+        a: 4,
+        b: 8,
+        total: 0.5,
+      }, done);
+  });
+
+  it('should return http code 400 when a = 5 devide b = 0', (done) => {
+    // calling ADD api
+    server
+      .get('/devide')
+      .query({
+        a: 5,
+        b: 0,
+      })
+      .expect((res) => {
+        console.log(res.body);
+      })
+      .expect('Content-type', /json/)
+      .expect(400, {
+        message: 'Incorrect input a or b value.',
+      }, done);
+  });
+
+  it('should return http code 400 when a = 5 devide b = null', (done) => {
+    // calling ADD api
+    server
+      .get('/devide')
+      .query({
+        a: 5,
+      })
+      .expect((res) => {
+        console.log(res.body);
+      })
+      .expect('Content-type', /json/)
+      .expect(400, {
+        message: 'Input a or b not found value.',
+      }, done);
   });
 });

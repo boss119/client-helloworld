@@ -7,7 +7,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha test/server.test.js",
+    "test": "mocha --exit test/calculator.test.js",
+    "test:integration": "mocha --exit test/server.test.js",
     "start": "node routes/index.js"
   },
   "repository": {
@@ -22,8 +23,12 @@
   "homepage": "https://github.com/boss119/node-HelloWorld#readme",
   "devDependencies": {
     "chai": "^4.1.2",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.13.0",
     "mocha": "^5.2.0",
     "should": "^13.2.1",
+    "standard": "^11.0.1",
     "supertest": "^3.1.0"
   },
   "dependencies": {
