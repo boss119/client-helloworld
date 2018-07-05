@@ -95,22 +95,6 @@ describe('Sample Integration tests', () => {
       }, done);
   });
 
-  it('should return http code 400 when a = "5" add b = null', (done) => {
-    // calling ADD api
-    server
-      .get('/add')
-      .query({
-        a: '5',
-      })
-      .expect((res) => {
-        console.log(res.body);
-      })
-      .expect('Content-type', /json/)
-      .expect(400, {
-        message: 'Input a or b not found value.',
-      }, done);
-  });
-
   it('should return http code 400 when a = null add b = "5"', (done) => {
     // calling ADD api
     server
