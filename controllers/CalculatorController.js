@@ -8,9 +8,17 @@ const AddPage = (req, res) => {
     } else {
       res.status(400).json(result);
     }
+  } else if (!req.query.a && req.query.b) {
+    res.status(400).json({
+      message: 'Input a not found value.',
+    });
+  } else if (req.query.a && !req.query.b) {
+    res.status(400).json({
+      message: 'Input b not found value.',
+    });
   } else {
     res.status(400).json({
-      message: 'Input a or b not found value.',
+      message: 'Input a and b not found value.',
     });
   }
 };
@@ -23,9 +31,17 @@ const MinusPage = (req, res) => {
     } else {
       res.status(400).json(result);
     }
+  } else if (!req.query.a && req.query.b) {
+    res.status(400).json({
+      message: 'Input a not found value.',
+    });
+  } else if (req.query.a && !req.query.b) {
+    res.status(400).json({
+      message: 'Input b not found value.',
+    });
   } else {
     res.status(400).json({
-      message: 'Input a or b not found value.',
+      message: 'Input a and b not found value.',
     });
   }
 };
@@ -38,9 +54,17 @@ const MultiplePage = (req, res) => {
     } else {
       res.status(400).json(result);
     }
+  } else if (!req.query.a && req.query.b) {
+    res.status(400).json({
+      message: 'Input a not found value.',
+    });
+  } else if (req.query.a && !req.query.b) {
+    res.status(400).json({
+      message: 'Input b not found value.',
+    });
   } else {
     res.status(400).json({
-      message: 'Input a or b not found value.',
+      message: 'Input a and b not found value.',
     });
   }
 };
@@ -53,9 +77,17 @@ const DevidePage = (req, res) => {
     } else {
       res.status(400).json(result);
     }
+  } else if (!req.query.a && req.query.b) {
+    res.status(400).json({
+      message: 'Input a not found value.',
+    });
+  } else if (req.query.a && !req.query.b) {
+    res.status(400).json({
+      message: 'Input b not found value.',
+    });
   } else {
     res.status(400).json({
-      message: 'Input a or b not found value.',
+      message: 'Input a and b not found value.',
     });
   }
 };

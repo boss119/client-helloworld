@@ -1,5 +1,5 @@
 const supertest = require('supertest');
-const app = require('../routes/index');
+const app = require('../../routes/index');
 
 const server = supertest(app);
 
@@ -74,7 +74,7 @@ describe('Sample Integration tests', () => {
       })
       .expect('Content-type', /json/)
       .expect(400, {
-        message: 'Incorrect input a or b value.',
+        message: 'Incorrect input b value.',
       }, done);
   });
 
@@ -91,7 +91,7 @@ describe('Sample Integration tests', () => {
       })
       .expect('Content-type', /json/)
       .expect(400, {
-        message: 'Incorrect input a or b value.',
+        message: 'Incorrect input a and b value.',
       }, done);
   });
 
@@ -107,7 +107,7 @@ describe('Sample Integration tests', () => {
       })
       .expect('Content-type', /json/)
       .expect(400, {
-        message: 'Input a or b not found value.',
+        message: 'Input a not found value.',
       }, done);
   });
 
@@ -143,7 +143,7 @@ describe('Sample Integration tests', () => {
       })
       .expect('Content-Type', /json/)
       .expect(400, {
-        message: 'Incorrect input a or b value.',
+        message: 'Incorrect input b value.',
       }, done);
   });
 
@@ -159,7 +159,7 @@ describe('Sample Integration tests', () => {
       })
       .expect('Content-Type', /json/)
       .expect(400, {
-        message: 'Input a or b not found value.',
+        message: 'Input b not found value.',
       }, done);
   });
 
@@ -214,7 +214,7 @@ describe('Sample Integration tests', () => {
       })
       .expect('Content-type', /json/)
       .expect(400, {
-        message: 'Incorrect input a or b value.',
+        message: 'Incorrect input b value.',
       }, done);
   });
 
@@ -230,7 +230,7 @@ describe('Sample Integration tests', () => {
       })
       .expect('Content-type', /json/)
       .expect(400, {
-        message: 'Input a or b not found value.',
+        message: 'Input b not found value.',
       }, done);
   });
 
@@ -285,7 +285,7 @@ describe('Sample Integration tests', () => {
       })
       .expect('Content-type', /json/)
       .expect(400, {
-        message: 'Incorrect input a or b value.',
+        message: 'Incorrect input b value.',
       }, done);
   });
 
@@ -301,7 +301,7 @@ describe('Sample Integration tests', () => {
       })
       .expect('Content-type', /json/)
       .expect(400, {
-        message: 'Input a or b not found value.',
+        message: 'Input b not found value.',
       }, done);
   });
 });

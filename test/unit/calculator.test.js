@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const calculate = require('../models/calculator');
+const calculate = require('../../models/calculator');
 
 describe('Sample unit tests class Calculate', () => {
   beforeEach(() => {
@@ -25,7 +25,7 @@ describe('Sample unit tests class Calculate', () => {
     expect(0).to.be.equal(total.total);
   });
 
-  it('should return total = 10 when a = "5", b = "5"', () => {
+  it('should return total = 10 when a = "5" add b = "5"', () => {
     // arrange
     const a = '5';
     const b = '5';
@@ -35,36 +35,36 @@ describe('Sample unit tests class Calculate', () => {
     expect(10).to.be.equal(total.total);
   });
 
-  it('should return message = "Incorrect input a or b value." when a = "5", b = "a"', () => {
+  it('should return message = "Incorrect input b value." when a = "5" add b = "a"', () => {
     // arrange
     const a = '5';
     const b = 'a';
     const total = calculate.add(a, b);
     // act
-    const message = 'Incorrect input a or b value.';
+    const message = 'Incorrect input b value.';
     // assert
     expect(message).to.be.not.equal(total.total);
   });
 
-  it('should return message = "Incorrect input a or b value." when a = "a", b = "b"', () => {
+  it('should return message = "Incorrect input a and b value." when a = "a" add b = "b"', () => {
     // arrange
     const a = 'a';
     const b = 'b';
     const total = calculate.add(a, b);
     // act
-    const message = 'Incorrect input a or b value.';
+    const message = 'Incorrect input a and b value.';
     // assert
     expect(message).to.be.not.equal(total.total);
   });
 
-  it('should return message = "Input a or b not found value." when a = "a", b = null', () => {
+  it('should return message = "Input b not found value." when a = "a" add b = null', () => {
     // arrange
     const a = 'a';
     const total = calculate.add(a);
     // act
-    const message = 'Input a or b not found value.';
+    const message = 'Input b not found value.';
     // assert
-    expect(message).to.be.not.equal(total.total);
+    expect(message).to.be.not.equal(total);
   });
 
   it('should return total = 0 when a = 5 minus b = 5', () => {
@@ -77,25 +77,25 @@ describe('Sample unit tests class Calculate', () => {
     expect(0).to.be.equal(total.total);
   });
 
-  it('should return message = "Incorrect input a or b value." when a = "a", b = "b"', () => {
+  it('should return message = "Incorrect input a and b value." when a = "a" minus b = "b"', () => {
     // arrange
     const a = 'a';
     const b = 'b';
     const total = calculate.minus(a, b);
     // act
-    const message = 'Incorrect input a or b value.';
+    const message = 'Incorrect input a and b value.';
     // assert
     expect(message).to.be.not.equal(total.total);
   });
 
-  it('should return message = "Input a or b not found value." when a = "a", b = null', () => {
+  it('should return message = "Input b not found value." when a = "a" minus b = null', () => {
     // arrange
     const a = 'a';
     const total = calculate.minus(a);
     // act
-    const message = 'Input a or b not found value.';
+    const message = 'Input b not found value.';
     // assert
-    expect(message).to.be.not.equal(total.total);
+    expect(message).to.be.not.equal(total);
   });
 
   it('should return total = 25 when a = 5 multiple b = 5', () => {
@@ -119,14 +119,14 @@ describe('Sample unit tests class Calculate', () => {
     expect(message).to.be.not.equal(total.total);
   });
 
-  it('should return message = "Input a or b not found value." when a = "a", b = null', () => {
+  it('should return message = "Input b not found value." when a = "a" multiple b = null', () => {
     // arrange
     const a = 'a';
     const total = calculate.multiple(a);
     // act
-    const message = 'Input a or b not found value.';
+    const message = 'Input b not found value.';
     // assert
-    expect(message).to.be.not.equal(total.total);
+    expect(message).to.be.not.equal(total);
   });
 
   it('should return total = 1 when a = 5 devide b = 5', () => {
@@ -149,35 +149,24 @@ describe('Sample unit tests class Calculate', () => {
     expect(0.5).to.be.equal(total.total);
   });
 
-  it('should return message = "Incorrect input a or b value." when a = 4, b = 0', () => {
-    // arrange
-    const a = 4;
-    const b = 0;
-    const total = calculate.devide(a, b);
-    // act
-    const message = 'Incorrect input a or b value.';
-    // assert
-    expect(message).to.be.not.equal(total.total);
-  });
-
-  it('should return message = "Incorrect input a or b value." when a = "a", b = "b"', () => {
+  it('should return message = "Incorrect input a and b value." when a = "a" devide b = "b"', () => {
     // arrange
     const a = 'a';
     const b = 'b';
     const total = calculate.devide(a, b);
     // act
-    const message = 'Incorrect input a or b value.';
+    const message = 'Incorrect input a and b value.';
     // assert
-    expect(message).to.be.not.equal(total.total);
+    expect(message).to.be.equal(total.message);
   });
 
-  it('should return message = "Input a or b not found value." when a = "a", b = null', () => {
+  it('should return message = "Input b not found value." when a = "a" devide b = null', () => {
     // arrange
     const a = 'a';
     const total = calculate.devide(a);
     // act
-    const message = 'Input a or b not found value.';
+    const message = 'Input b not found value.';
     // assert
-    expect(message).to.be.not.equal(total.total);
+    expect(message).to.be.not.equal(total);
   });
 });

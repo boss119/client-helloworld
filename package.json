@@ -7,8 +7,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha --exit test/calculator.test.js",
-    "test:integration": "mocha --exit test/server.test.js",
+    "test": "mocha --exit test/unit/*.js",
+    "test:integration": "mocha --exit test/integration/*.js",
     "start": "node routes/index.js"
   },
   "repository": {
