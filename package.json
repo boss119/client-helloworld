@@ -5,8 +5,9 @@
   "author": "Warathat",
   "private": true,
   "scripts": {
+    "start": "npm run serve | npm run dev",
     "serve": "vue-cli-service serve",
-    "start": "nodemon routes/app.js",
+    "dev": "nodemon routes/app.js",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test:unit": "mocha --exit tests/unit/Calculator.spec.js",

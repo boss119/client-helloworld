@@ -1,12 +1,13 @@
 /* โหลด Express มาใช้งาน */
-const app = require('express')();
+const express = require('express');
+
+const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
 
 const calculatorController = require('../controllers/CalculatorController');
 
-app.set('view engine', 'pug');
 app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -20,15 +21,10 @@ const port = process.env.PORT || 8081;
 /* Routing */
 app
   .get('/', (req, res) => {
-    res.send('Index!!');
-  })
-  .get('/hello', (req, res) => {
-    res.send({
-      title: 'This is HelloPage.',
-    });
+    res.send('Index');
   })
   .post('/calculator', calculatorController);
 
-app.listen(process.env.PORT || 8081, () => console.log(`Listening on ${port}`));
+app.listen(port, () => console.log(`Listening on ${port}`));
 
 module.exports = app;
