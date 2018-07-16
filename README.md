@@ -1,27 +1,26 @@
-## Project Hello World
-this project use nodeJs [Express, Mocha, Chai] and deploy on Heroku.
+# RESTFUL API
 
-## Requiment
-- unit Testing use Mocha & Chai
-- Express Deploy on Heroku
+## Project setup
+```
+npm install --save axios body-parser bootstrap bootstrap-vue cors express mocha morgan nodemon supertest
+```
 
-## Set up
-##### Install Mocha
-- npm install mocha --save
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
 
-##### Install Chai
-- npm install chai --save
+### Compiles and minifies for production
+```
+npm run build
+```
 
-##### Install Express
-- npm install express --save
+### Lints and fixes files
+```
+npm run lint
+```
 
-## Run
-##### unit test
-- npm test
-
-##### start
-- npm start
-
-Vue.js >>>
-pug
-a: input box, b: input box, select operator = ?
+### Run your unit tests
+```
+npm run test:unit
+```

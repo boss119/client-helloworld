@@ -1,5 +1,5 @@
 const supertest = require('supertest');
-const app = require('../../routes/index');
+const app = require('../../routes/app');
 
 const server = supertest(app);
 
@@ -7,10 +7,11 @@ describe('Sample Integration tests', () => {
   it('should return total = 10 when a = 5 add b = 5', (done) => {
     // calling ADD api
     server
-      .get('/add')
-      .query({
+      .post('/calculator')
+      .send({
         a: 5,
         b: 5,
+        operator: 'add',
       })
       .expect((res) => {
         console.log(res.body);
@@ -26,10 +27,11 @@ describe('Sample Integration tests', () => {
   it('should return total = 0 when a = 5 add b = -5', (done) => {
     // calling ADD api
     server
-      .get('/add')
-      .query({
+      .post('/calculator')
+      .send({
         a: 5,
         b: -5,
+        operator: 'add',
       })
       .expect((res) => {
         console.log(res.body);
@@ -45,10 +47,11 @@ describe('Sample Integration tests', () => {
   it('should return total = 0 when a = 0 add b = 0', (done) => {
     // calling ADD api
     server
-      .get('/add')
-      .query({
+      .post('/calculator')
+      .send({
         a: 0,
         b: 0,
+        operator: 'add',
       })
       .expect((res) => {
         console.log(res.body);
@@ -64,10 +67,11 @@ describe('Sample Integration tests', () => {
   it('should return http code 400 when a = "5" add b = "a"', (done) => {
     // calling ADD api
     server
-      .get('/add')
-      .query({
+      .post('/calculator')
+      .send({
         a: '5',
         b: 'a',
+        operator: 'add',
       })
       .expect((res) => {
         console.log(res.body);
@@ -81,10 +85,11 @@ describe('Sample Integration tests', () => {
   it('should return http code 400 when a = "a" add b = "b"', (done) => {
     // calling ADD api
     server
-      .get('/add')
-      .query({
+      .post('/calculator')
+      .send({
         a: 'a',
         b: 'b',
+        operator: 'add',
       })
       .expect((res) => {
         console.log(res.body);
@@ -98,9 +103,10 @@ describe('Sample Integration tests', () => {
   it('should return http code 400 when a = null add b = "5"', (done) => {
     // calling ADD api
     server
-      .get('/add')
-      .query({
+      .post('/calculator')
+      .send({
         b: '5',
+        operator: 'add',
       })
       .expect((res) => {
         console.log(res.body);
@@ -114,10 +120,11 @@ describe('Sample Integration tests', () => {
   it('should return total = 0 when a = 5 minus b = 5', (done) => {
     // calling ADD api
     server
-      .get('/minus')
-      .query({
+      .post('/calculator')
+      .send({
         a: 5,
         b: 5,
+        operator: 'minus',
       })
       .expect((res) => {
         console.log(res.body);
@@ -133,10 +140,11 @@ describe('Sample Integration tests', () => {
   it('should return http code 400 when a = 5 minus b = "a"', (done) => {
     // calling ADD api
     server
-      .get('/minus')
-      .query({
+      .post('/calculator')
+      .send({
         a: 5,
         b: 'a',
+        operator: 'minus',
       })
       .expect((res) => {
         console.log(res.body);
@@ -150,9 +158,10 @@ describe('Sample Integration tests', () => {
   it('should return http code 400 when a = 5 minus b = null', (done) => {
     // calling ADD api
     server
-      .get('/minus')
-      .query({
+      .post('/calculator')
+      .send({
         a: 5,
+        operator: 'minus',
       })
       .expect((res) => {
         console.log(res.body);
@@ -166,10 +175,11 @@ describe('Sample Integration tests', () => {
   it('should return total = 25 when a = 5 multiple b = 5', (done) => {
     // calling ADD api
     server
-      .get('/multiple')
-      .query({
+      .post('/calculator')
+      .send({
         a: 5,
         b: 5,
+        operator: 'multiple',
       })
       .expect((res) => {
         console.log(res.body);
@@ -185,10 +195,11 @@ describe('Sample Integration tests', () => {
   it('should return total = 0 when a = 5 multiple b = 0', (done) => {
     // calling ADD api
     server
-      .get('/multiple')
-      .query({
+      .post('/calculator')
+      .send({
         a: 5,
         b: 0,
+        operator: 'multiple',
       })
       .expect((res) => {
         console.log(res.body);
@@ -204,10 +215,11 @@ describe('Sample Integration tests', () => {
   it('should return http code 400 when a = 5 multiple b = "g"', (done) => {
     // calling ADD api
     server
-      .get('/multiple')
-      .query({
+      .post('/calculator')
+      .send({
         a: 5,
         b: 'g',
+        operator: 'multiple',
       })
       .expect((res) => {
         console.log(res.body);
@@ -221,9 +233,10 @@ describe('Sample Integration tests', () => {
   it('should return http code 400 when a = 5 multiple b = null', (done) => {
     // calling ADD api
     server
-      .get('/multiple')
-      .query({
+      .post('/calculator')
+      .send({
         a: 5,
+        operator: 'multiple',
       })
       .expect((res) => {
         console.log(res.body);
@@ -237,10 +250,11 @@ describe('Sample Integration tests', () => {
   it('should return total = 1 when a = 5 devide b = 5', (done) => {
     // calling ADD api
     server
-      .get('/devide')
-      .query({
+      .post('/calculator')
+      .send({
         a: 5,
         b: 5,
+        operator: 'devide',
       })
       .expect((res) => {
         console.log(res.body);
@@ -256,10 +270,11 @@ describe('Sample Integration tests', () => {
   it('should return total = 0.5 when a = 4 devide b = 8', (done) => {
     // calling ADD api
     server
-      .get('/devide')
-      .query({
+      .post('/calculator')
+      .send({
         a: 4,
         b: 8,
+        operator: 'devide',
       })
       .expect((res) => {
         console.log(res.body);
@@ -275,10 +290,11 @@ describe('Sample Integration tests', () => {
   it('should return http code 400 when a = 5 devide b = 0', (done) => {
     // calling ADD api
     server
-      .get('/devide')
-      .query({
+      .post('/calculator')
+      .send({
         a: 5,
         b: 0,
+        operator: 'devide',
       })
       .expect((res) => {
         console.log(res.body);
@@ -292,9 +308,10 @@ describe('Sample Integration tests', () => {
   it('should return http code 400 when a = 5 devide b = null', (done) => {
     // calling ADD api
     server
-      .get('/devide')
-      .query({
+      .post('/calculator')
+      .send({
         a: 5,
+        operator: 'devide',
       })
       .expect((res) => {
         console.log(res.body);

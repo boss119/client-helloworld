@@ -1,4 +1,3 @@
-
 # General
 .DS_Store
 .AppleDouble
@@ -191,7 +190,17 @@ build/Release
 
 # Dependency directories
 node_modules/
+/dist/
 jspm_packages/
+/test/unit/coverage/
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
 
 # TypeScript v1 declaration files
 typings/
