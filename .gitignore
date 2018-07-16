@@ -190,7 +190,7 @@ build/Release
 
 # Dependency directories
 node_modules/
-/dist/
+# /dist/
 jspm_packages/
 /test/unit/coverage/
 
