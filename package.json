@@ -1,17 +1,13 @@
 {
-  "name": "helloworld-3",
+  "name": "client-helloworld",
   "version": "0.1.0",
   "description": "A Vue.js project",
   "author": "Warathat",
   "private": true,
   "scripts": {
-    "start": "npm run serve | npm run dev",
-    "serve": "vue-cli-service serve",
-    "dev": "nodemon routes/app.js",
+    "start": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "test:unit": "mocha --exit tests/unit/Calculator.spec.js",
-    "test:integration": "mocha --exit tests/integration/Calculator.spec.js"
+    "lint": "vue-cli-service lint"
   },
   "repository": {
     "type": "git",
@@ -24,18 +20,10 @@
   "homepage": "https://github.com/boss119/node-HelloWorld#readme",
   "dependencies": {
     "axios": "^0.18.0",
-    "body-parser": "^1.18.3",
     "bootstrap": "^4.1.2",
     "bootstrap-vue": "^2.0.0-rc.11",
-    "cors": "^2.8.4",
-    "express": "^4.16.3",
-    "mocha": "^5.2.0",
-    "morgan": "^1.9.0",
-    "nodemon": "^1.18.2",
-    "pug": "^2.0.3",
-    "pug-plain-loader": "^1.0.0",
+    "dotenv": "^6.0.0",
     "register-service-worker": "^1.0.0",
-    "supertest": "^3.1.0",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1"
   },
@@ -47,7 +35,6 @@
     "@vue/cli-service": "^3.0.0-rc.4",
     "@vue/eslint-config-airbnb": "^3.0.0-rc.4",
     "@vue/test-utils": "^1.0.0-beta.20",
-    "chai": "^4.1.2",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
     "vue-template-compiler": "^2.5.16"

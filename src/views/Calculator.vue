@@ -29,40 +29,52 @@ export default {
   },
   methods: {
     async add() {
+      this.total = '';
+      this.message = '';
       const response = await CalculatorService.fetchCalculator({
         a: this.a,
         b: this.b,
         operator: 'add',
+      }).catch((error) => {
+        this.message = error.response.data.message;
       });
       this.total = response.data.total;
-      this.message = response.data.message;
     },
     async minus() {
+      this.total = '';
+      this.message = '';
       const response = await CalculatorService.fetchCalculator({
         a: this.a,
         b: this.b,
         operator: 'minus',
+      }).catch((error) => {
+        this.message = error.response.data.message;
       });
       this.total = response.data.total;
-      this.message = response.data.message;
     },
     async multiple() {
+      this.total = '';
+      this.message = '';
       const response = await CalculatorService.fetchCalculator({
         a: this.a,
         b: this.b,
         operator: 'multiple',
+      }).catch((error) => {
+        this.message = error.response.data.message;
       });
       this.total = response.data.total;
-      this.message = response.data.message;
     },
     async devide() {
+      this.total = '';
+      this.message = '';
       const response = await CalculatorService.fetchCalculator({
         a: this.a,
         b: this.b,
         operator: 'devide',
+      }).catch((error) => {
+        this.message = error.response.data.message;
       });
       this.total = response.data.total;
-      this.message = response.data.message;
     },
   },
 };

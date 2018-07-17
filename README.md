@@ -24,3 +24,7 @@ npm run lint
 ```
 npm run test:unit
 ```
+load from env variable
+dotenv
+
+up to heroku
