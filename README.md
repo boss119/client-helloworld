@@ -1,8 +1,8 @@
-# RESTFUL API
+# Vue.js
 
 ## Project setup
 ```
-npm install --save axios body-parser bootstrap bootstrap-vue cors express mocha morgan nodemon supertest
+npm install --vue
 ```
 
 ### Compiles and hot-reloads for development
@@ -24,7 +24,3 @@ npm run lint
 ```
 npm run test:unit
 ```
-load from env variable
-dotenv
-
-up to heroku
