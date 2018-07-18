@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+require('dotenv').config();
+
 export default () => axios.create({
-  baseURL: 'https://server-helloworld.herokuapp.com/',
+  baseURL: process.env.API_URL,
 });
