@@ -1,0 +1,12 @@
+version: '3.3'
+
+services:
+  node-client:
+    build: .
+    image: docker-node:1.0.0
+    container_name: client-helloworld
+    # command: npm start
+    ports:
+      - 8080:8080
+    volumes:
+      - ./src:/app/src
